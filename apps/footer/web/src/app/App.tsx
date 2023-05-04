@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { store } from '../../../../../libs/ui-state/store';
+import store from 'store';
 import Test from '../components/Test';
 
 export default function App() {

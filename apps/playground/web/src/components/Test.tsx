@@ -1,4 +1,4 @@
-import { store } from '../../../../../libs/ui-state/store';
+import store from 'store';
 
 export default function Test() {
   console.log('Render playground test');

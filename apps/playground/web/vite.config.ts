@@ -1,8 +1,10 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
+import baseVite from '../../../vite.base';
 
 export default defineConfig({
+  ...baseVite,
   cacheDir: '../../../node_modules/.vite/header',
 
   server: {
@@ -20,11 +22,11 @@ export default defineConfig({
       root: '../../../',
     }),
   ],
-  
+
   build: {
     rollupOptions: {
       input: {
-        index: '/src/main.tsx'
+        index: '/src/main.tsx',
       },
       output: {
         format: 'system',
@@ -32,12 +34,12 @@ export default defineConfig({
         assetFileNames: 'assets/[name][ext]',
         globals: {
           'single-spa': 'singleSpa',
-          'single-spa-layout': 'singleSpaLayout'
-        }
+          'single-spa-layout': 'singleSpaLayout',
+        },
       },
       preserveEntrySignatures: 'strict',
-      external: ['single-spa', 'single-spa-layout']
-    }
+      external: ['single-spa', 'single-spa-layout'],
+    },
   },
 
   // Uncomment this if you are using workers.
