@@ -1,0 +1,120 @@
+{
+  "name": "spa-local",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/spa/local/src",
+  "projectType": "application",
+  "targets": {
+    "copy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/spa/local",
+        "commands": [
+          "cp -a ../web/public/. ./public/",
+          "cp ../../../dist/apps/spa/web/root-config.js ./public/root-config.js",
+          "cp ../web/src/microfrontend-layout.html ./src/microfrontend-layout.html",
+          "cp ../../../dist/apps/header/web/index.js ./public/header/index.js",
+          "cp ../../../dist/apps/playground/web/index.js ./public/playground/index.js",
+          "cp ../../../dist/apps/footer/web/index.js ./public/footer/index.js",
+          "cp ../../../dist/apps/marketing/web/index.js ./public/marketing/index.js",
+          "cp ../../../dist/apps/authentication/web/index.js ./public/authentication/index.js",
+          "cp ../../../dist/apps/authorization/web/index.js ./public/authorization/index.js"
+        ]
+      }
+    },
+    "copyDirs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/spa/local",
+        "commands": [
+          "mkdir -p ./public/",
+          "mkdir -p ./src/",
+          "mkdir -p ./public/header/",
+          "mkdir -p ./public/playground/",
+          "mkdir -p ./public/footer/",
+          "mkdir -p ./public/marketing/",
+          "mkdir -p ./public/authentication/",
+          "mkdir -p ./public/authorization/"
+        ]
+      }
+    },
+    "buildDependencies": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/spa/local",
+        "commands": [
+          "nx build header-web",
+          "nx build playground-web",
+          "nx build footer-web",
+          "nx build marketing-web",
+          "nx build authentication-web",
+          "nx build authorization-web",
+          "nx build spa-web"
+        ]
+      }
+    },
+    "build": {
+      "executor": "@nrwl/vite:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/spa/local"
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/vite:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "spa-local:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "spa-local:build:development",
+          "hmr": true
+        },
+        "production": {
+          "buildTarget": "spa-local:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "preview": {
+      "executor": "@nrwl/vite:preview-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "spa-local:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "spa-local:build:development"
+        },
+        "production": {
+          "buildTarget": "spa-local:build:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nrwl/vite:test",
+      "outputs": ["coverage/apps/spa/local"],
+      "options": {
+        "passWithNoTests": true,
+        "reportsDirectory": "../../../coverage/apps/spa/local"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/spa/local/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
