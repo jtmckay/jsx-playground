@@ -4,6 +4,7 @@ import Test from '../components/Test';
 
 export default function App() {
   console.log('render Footer App');
+  
   return (
     <footer
       class={css`

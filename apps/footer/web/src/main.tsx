@@ -5,11 +5,11 @@ export const root = () => {
   document.getElementById('root')?.appendChild(<App />);
 };
 
-export const bootstrap = () => {
+export const bootstrap = async (props) => {
   return Promise.resolve();
 };
 
-export const mount = () => {
+export const mount = async () => {
   document
     .getElementById('single-spa-application:@playground/footer')
     ?.appendChild(<App />);

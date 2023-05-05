@@ -9,10 +9,10 @@ System.register(["single-spa","single-spa-layout"],function(s,u){"use strict";va
   <main style="display: flex; flex-direction: column; min-height: 100vh">
     <route default>
       <application name="@playground/header"></application>
-      <application name="@playground/marketing"></application>
+      <application name="@playground/playground"></application>
       <application name="@playground/footer"></application>
     </route>
-    <route path="app">
+    <!-- <route path="app">
       <application name="@playground/header"></application>
       <application name="@playground/playground"></application>
       <application name="@playground/footer"></application>
@@ -26,7 +26,7 @@ System.register(["single-spa","single-spa-layout"],function(s,u){"use strict";va
       <application name="@playground/header"></application>
       <application name="@playground/authorization"></application>
       <application name="@playground/footer"></application>
-    </route>
+    </route> -->
   </main>
 </single-spa-router>
 `),r=i({routes:e,loadApp({name:l}){return System.import(l)}}),c=p({routes:e,applications:r});r.forEach(a),c.activate(),t()}}});

@@ -10,14 +10,12 @@
         "cwd": "apps/spa/local",
         "commands": [
           "cp -a ../web/public/. ./public/",
+          "cp ../../../dist/apps/spa/web/store.js ./public/store.js",
           "cp ../../../dist/apps/spa/web/root-config.js ./public/root-config.js",
           "cp ../web/src/microfrontend-layout.html ./src/microfrontend-layout.html",
           "cp ../../../dist/apps/header/web/index.js ./public/header/index.js",
           "cp ../../../dist/apps/playground/web/index.js ./public/playground/index.js",
-          "cp ../../../dist/apps/footer/web/index.js ./public/footer/index.js",
-          "cp ../../../dist/apps/marketing/web/index.js ./public/marketing/index.js",
-          "cp ../../../dist/apps/authentication/web/index.js ./public/authentication/index.js",
-          "cp ../../../dist/apps/authorization/web/index.js ./public/authorization/index.js"
+          "cp ../../../dist/apps/footer/web/index.js ./public/footer/index.js"
         ]
       }
     },
@@ -31,9 +29,7 @@
           "mkdir -p ./public/header/",
           "mkdir -p ./public/playground/",
           "mkdir -p ./public/footer/",
-          "mkdir -p ./public/marketing/",
-          "mkdir -p ./public/authentication/",
-          "mkdir -p ./public/authorization/"
+          "mkdir -p ./public/store/"
         ]
       }
     },
@@ -45,9 +41,6 @@
           "nx build header-web",
           "nx build playground-web",
           "nx build footer-web",
-          "nx build marketing-web",
-          "nx build authentication-web",
-          "nx build authorization-web",
           "nx build spa-web"
         ]
       }

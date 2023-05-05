@@ -1,11 +1,9 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
-import baseVite from '../../../vite.base';
 
 export default defineConfig({
-  ...baseVite,
-  cacheDir: '../../../node_modules/.vite/spa',
+  cacheDir: '../../../node_modules/.vite/header',
 
   server: {
     port: 4200,
@@ -26,9 +24,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        index: '/index.html',
-        'root-config': '/src/root-config.ts',
-        'store': '../../../libs/store/store.ts'
+        index: '/src/main.ts'
       },
       output: {
         format: 'system',
@@ -40,7 +36,7 @@ export default defineConfig({
         }
       },
       preserveEntrySignatures: 'strict',
-      external: ['single-spa', 'single-spa-layout', 'store']
+      external: ['single-spa', 'single-spa-layout']
     }
   },
 

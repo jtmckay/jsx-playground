@@ -38,7 +38,7 @@ export default defineConfig({
         },
       },
       preserveEntrySignatures: 'strict',
-      external: ['single-spa', 'single-spa-layout'],
+      external: ['single-spa', 'single-spa-layout', 'store'],
     },
   },
 
