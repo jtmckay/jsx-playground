@@ -1,10 +1,8 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
-import baseVite from '../../../vite.base';
 
 export default defineConfig({
-  ...baseVite,
   cacheDir: '../../../node_modules/.vite/header',
 
   server: {
